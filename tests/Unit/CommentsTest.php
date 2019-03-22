@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Faker\Factory;
 use App\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\DatabaseSeed;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -71,7 +72,7 @@ class CommentsTest extends TestCase
     /**
      * создание комментария без авторизации
      */
-    public function testCreateComentsFailAuth():void
+    public function testCreateCommentsFailAuth():void
     {
         $response = $this->json('POST','/posts/1/comments',['content'=>'test']);
         $response->assertStatus(403);
